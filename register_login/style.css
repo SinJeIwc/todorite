@@ -1,0 +1,16 @@
+body {
+    font-family: 'Poppins';
+}
+
+.right_container {
+    float:right;
+}
+
+.left_container {
+    float:left;
+    background:black;
+}
+
+.company_text {
+    color: white;
+}
