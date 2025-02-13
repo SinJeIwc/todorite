@@ -4,9 +4,14 @@
 }
 
 body {
+    display: flex;
     font-family: 'Inter', sans-serif;
     font-weight: 400; 
     background-color: #121212; /* Темный фон для всего */
+}
+
+p {
+    margin-bottom: 0;
 }
 
 a {
@@ -18,11 +23,23 @@ img {
 }
 
 button {
+    background: transparent;
     border: 0;
     cursor: pointer;
 }
 
-/* left container */
+button, input {
+    outline: none; 
+    border: none;  
+}
+
+button:focus, input:focus {
+    outline: none;
+    border: none;
+}
+
+
+/* LEFT CONTAINER */
 .left_container {
     background-color: black;
     display: flex;
@@ -33,7 +50,7 @@ button {
     font-size: 1.2rem;
     align-items: center;
     box-sizing: border-box;
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     top: 0;
     border-right: 1px solid #303030;
@@ -41,6 +58,7 @@ button {
 
 /* logo */
 .logo_container {
+    width: 10vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -55,6 +73,7 @@ button {
 
 /* search place */
 .seach_header {
+    padding: 5px;
     position: relative;
     width: 100%;
     display: flex;
@@ -92,7 +111,7 @@ button {
     width: 100%;
     flex-grow: 1; 
     overflow-y: auto;
-    height: 83%;
+    height: 80vh;
 }
 
 .contacts_container h2 {
@@ -124,6 +143,7 @@ button {
 }
 
 .about_contact {
+    margin-bottom: 0;
     font-size: small;
     color: gray;
 }
@@ -132,6 +152,7 @@ button {
     flex-grow: 1; 
     overflow-y: auto;
     width: 100%;
+    height: 80vh;
 }
 
 .scroll button {
@@ -160,6 +181,7 @@ button {
     border-top: 1px solid #303030;
     background-color: black;
     flex-shrink: 0;
+    height: 10%;
 }
 
 .profile_btn {
@@ -176,4 +198,90 @@ button {
     font-weight: 500;
     font-size: 12px;
     color: #BCBCBC;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+/* RIGHT CONTAINER */
+.right_container {
+    justify-content: space-between;
+    color: white;
+    width: 75vw;
+    height: 100vh;
+}
+
+.chat_header {
+    width: 8vh;
+    padding: 15px 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #303030;
+}
+.chat_header img {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+}
+
+#more_btn {
+    margin-left: auto;
+    width: 30px;
+}
+
+#more_btn img {
+    width: 10px;
+}
+
+.contact {
+    align-items: center;
+    display: flex;
+}
+
+.contact p {
+    margin-left: 15px;
+}
+
+.contact-chat_container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.my-message_container {
+    display: inline-block;
+    margin-left: auto;
+    display: flex;
+}
+
+.my-message_container p {
+    margin: 20px;
+    padding: 20px;
+
+    background-color: #280046;
+    font-size: medium;
+
+    border-radius: 20px;
+    border-top-right-radius: 0;
+}
+
+.contact-message_container p {
+    margin: 15px;
+    padding: 20px;
+    margin-right: auto;
+    background-color: #323232;
+    font-size: medium;
+    display: inline-block;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+}
+.contact-chat_container img {
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
