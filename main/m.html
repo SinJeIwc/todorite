@@ -15,53 +15,50 @@
 <body>
     <div class="main">
         <div class="left_container">
-        <div class="logo_container">
-            <img src="/images/logo.jpg" alt="logo" width="80" height="80">
-            <h1>ToDoRite</h1>
-        </div>
-        <div class="scroll_container">
-            <!-- Seacher -->
-            <div class="seach_header">
-                <i class="fa fa-search" style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%);"></i>
-                <input type="text" placeholder="Search people">
+            <div class="logo_container">
+                <img src="/images/logo.jpg" alt="logo" width="80" height="80">
+                <h1>ToDoRite</h1>
             </div>
+            <div class="scroll_container">
+                <!-- Seacher -->
+                <div class="seach_header">
+                    <i class="fa fa-search" style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%);"></i>
+                    <input type="text" placeholder="Search people">
+                </div>
             
             <!-- Contacts -->
-            <div class="contacts_container">
-                <h2 id="chats">CHATS</h2>
-
-                <ul class="scroll">
-                    <button>
-                        <div class="contact">
-                            <img src="/images/adil.jpg" alt="">
-                            <div class="text-in-contact">
-                                <p>Adil</p>
-                                <p class="about_contact">I am lol</p>
+                <div class="contacts_container">
+                    <h2 id="chats">CHATS</h2>
+                    <ul class="scroll">
+                        <button>
+                            <div class="contact">
+                                <img src="/images/adil.jpg" alt="">
+                                <div class="text-in-contact">
+                                    <p>Adil</p>
+                                    <p class="about_contact">I am lol</p>
+                                </div>
                             </div>
-                        </div>
-                    </button>
-                    <button>
-                        <div class="contact">
-                            <img src="/images/daniyar.jpg" alt="">
-                            <div class="text-in-contact">
-                                <p>Daniyar</p>
-                                <p class="about_contact">I am the best</p>
+                        </button>
+                        <button>
+                            <div class="contact">
+                                <img src="/images/daniyar.jpg" alt="">
+                                <div class="text-in-contact">
+                                    <p>Daniyar</p>
+                                    <p class="about_contact">I am the best</p>
+                                </div>
                             </div>
-                        </div>
-                    </button>
-                    <button>
-                        <div class="contact">
-                            <img src="/images/dim_agai.jpg" alt="">
-                            <div class="text-in-contact">
-                                <p>Dim Agai</p>
-                                <p class="about_contact">I like you</p>
+                        </button>
+                        <button>
+                            <div class="contact">
+                                <img src="/images/dim_agai.jpg" alt="">
+                                <div class="text-in-contact">
+                                    <p>Dim Agai</p>
+                                    <p class="about_contact">I like you</p>
+                                </div>
                             </div>
-                        </div>
-                    </button>
-                </ul>
-
-                </div>
-                
+                        </button>
+                    </ul>
+                    </div>
             </div>
             <div class="profile_container">
                 <button class="profile_btn">
@@ -71,8 +68,8 @@
                     <img src="/images/sign_out.png" alt="sign out" width="50" height="50">
                 </button>
             </div>
-
         </div>
+
         <div class="right_container">
             <div class="chat_header">
                 <div class="contact">
@@ -84,7 +81,8 @@
                 </button>    
                 
             </div>
-            <div class="contact-chat_container">
+            
+            <ul class="contact-chat_container">
                 <div class="my-message_container">
                     <p>Hello, we made site for you</p>
                     <img src="/images/we.jpg" alt="">
@@ -120,9 +118,22 @@
                     <p>Can't wait for the next time!</p>
                     <img src="/images/we.jpg" alt="">
                 </div>
-            </div>
-            <div class="input_container">
+            </ul>
 
+            <div class="input_container">
+                <img src="/images/chat.png" alt="" width="36" height="36" id="chat_img">
+                <input type="text" placeholder="Type message..." class="input_items">
+                <div class="send_container">
+                    <button class="input_items">
+                        <img src="/images/paperclip.svg" alt="" width="34px" height="34px">
+                    </button>
+                    <button class="input_items">
+                        <div class="send_btn">
+                            <p>Send</p>
+                            <img src="/images/send.svg" alt="" width="25" height="25">
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

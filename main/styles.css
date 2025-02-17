@@ -58,11 +58,11 @@ button:focus, input:focus {
 
 /* logo */
 .logo_container {
-    width: 10vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    height: 10%;
     padding: 5px;
     gap: 5px;
 }
@@ -73,6 +73,7 @@ button:focus, input:focus {
 
 /* search place */
 .seach_header {
+    height: 8%;
     padding: 5px;
     position: relative;
     width: 100%;
@@ -111,7 +112,8 @@ button:focus, input:focus {
     width: 100%;
     flex-grow: 1; 
     overflow-y: auto;
-    height: 80vh;
+    height: 90%;
+    min-height: 75vh;
 }
 
 .contacts_container h2 {
@@ -150,9 +152,21 @@ button:focus, input:focus {
 
 .scroll_container {
     flex-grow: 1; 
-    overflow-y: auto;
+    /* overflow-y: auto; */
     width: 100%;
-    height: 80vh;
+    height: 80%;
+}
+
+.scroll ::-webkit-scrollbar {
+    width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.scroll {
+    overflow-y: auto;
 }
 
 .scroll button {
@@ -206,15 +220,18 @@ button:focus, input:focus {
     width: 100vw;
 }
 
+
 /* RIGHT CONTAINER */
 .right_container {
     justify-content: space-between;
     color: white;
-    width: 75vw;
+    width: 75%;
     height: 100vh;
 }
 
+/* chat header */
 .chat_header {
+    height: 10%;
     width: 8vh;
     padding: 15px 30px;
     width: 100%;
@@ -222,6 +239,7 @@ button:focus, input:focus {
     align-items: center;
     border-bottom: 1px solid #303030;
 }
+
 .chat_header img {
     width: 58px;
     height: 58px;
@@ -246,10 +264,32 @@ button:focus, input:focus {
     margin-left: 15px;
 }
 
+/* chat */
 .contact-chat_container {
+    margin: 0 40px;
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 80%;
+}
+
+.contact-chat_container p{
+    margin: 15px;
+    padding: 20px;
+    font-size: medium;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.contact-chat_container img {
+    margin: 15px 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.contact-chat_container ul {
+    list-style: none;
+    padding: 0;
 }
 
 .my-message_container {
@@ -258,30 +298,72 @@ button:focus, input:focus {
     display: flex;
 }
 
+.contact-message_container {
+    display: inline-block;
+    margin-right: auto;
+    display: flex;
+}
+
 .my-message_container p {
-    margin: 20px;
-    padding: 20px;
-
     background-color: #280046;
-    font-size: medium;
-
-    border-radius: 20px;
     border-top-right-radius: 0;
 }
 
 .contact-message_container p {
-    margin: 15px;
-    padding: 20px;
-    margin-right: auto;
     background-color: #323232;
-    font-size: medium;
-    display: inline-block;
-    border-radius: 20px;
     border-top-left-radius: 0;
 }
-.contact-chat_container img {
-    margin-top: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+
+/* input */
+.input_container {
+    background-color: #121212;
+    border-top: 1px solid #303030;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+}
+
+#chat_img {
+    margin: 0 10px 0 40px;
+}
+
+.input_container input {
+    margin: 0 10px;
+    width: 50vw;
+}
+
+.input_container input {
+    font-weight: 100;
+    font-size: large;
+    height: 30px;
+    width: 75%;
+    padding: 20px 0; 
+    border-radius: 10px;
+    background-color: #121212;
+    color: white;
+    outline: none;
+}
+
+.send_btn {
+    display: flex;
+    color: white;
+    padding: 10px;
+    background-color: #5D01A1;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.send_btn img {
+    margin-left: 10px;
+}
+
+/* .send_container {
+    margin-left: auto;
+    padding-left: 40px;
+} */
+
+.input_items {
+    margin: 10px
 }
