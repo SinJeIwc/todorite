@@ -64,8 +64,12 @@
 }
 
 /* Delete All button when active */
+#deleteAllButton {
+    background-color: #4b0280;
+}
+
 .more.active {
-    display: block;
+    display: flex;
 }
 
 .more:hover {
@@ -103,22 +107,24 @@
 }
 
 .my-message_container {
-    margin-left: auto;
+    align-self: flex-end;
     display: flex;
 }
 
 .contact-message_container {
-    margin-right: auto;
+    align-self: flex-start;
     display: flex;
 }
 
 .my-message_container p {
+    word-break: break-all;
     background-color: #280046;
     color: white;
     border-top-right-radius: 0;
 }
 
 .contact-message_container p {
+    word-break: break-all;
     background-color: #323232;
     color: white;
     border-top-left-radius: 0;
