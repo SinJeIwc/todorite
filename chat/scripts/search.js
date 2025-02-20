@@ -1,3 +1,4 @@
+import {users} from '../data/users.js';
 import {renderSearchedContacts} from './contact.js';
 
 const inputElement = document.querySelector('.js-input');

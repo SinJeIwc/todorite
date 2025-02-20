@@ -3,8 +3,7 @@ import {chats} from '../data/chats.js';
 
 const contacts = document.querySelector('.js-scroll');
 
-// Render All Contacts
-export function renderContacts() {
+function renderContacts() {
     let contactHTML = ''
 
     users.forEach((user) => {
@@ -37,8 +36,6 @@ export function renderContacts() {
 
 renderContacts();
 
-
-// Render Searched Contacts
 export function renderSearchedContacts(name) {
     let contactHTML = ''
 

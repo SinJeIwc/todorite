@@ -1,5 +1,3 @@
-import {renderContacts} from './contact.js';
-
 const messageInput = document.getElementById("messageInput");
 const messageList = document.getElementById("messageList");
 const addButton = document.querySelector(".send_btn");
@@ -21,7 +19,7 @@ console.log("Данные сохранены!");
 
 let chats = JSON.parse(localStorage.getItem("chats")) || {}; // Загружаем чаты из localStorage //
 
-renderContacts();
+
 // Текущий контакт
 let currentContact = null;
 
@@ -97,7 +95,7 @@ function scrollToBottom() {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-document.addEventListener(" ", function () {
+document.addEventListener("click", function () {
     deleteAllMessages.classList.remove("active");
 });
 
