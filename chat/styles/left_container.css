@@ -171,13 +171,19 @@
     cursor: pointer;
 }
 
+.nickname {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
 #sign_out_logo {
     width: 50px;
     height: 50px;
     border-radius: 25%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .left_container {
         display:none;
     }

@@ -7,7 +7,8 @@
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
         <!-- JavaScript -->
-        <script src="./script.js" defer></script>
+        <script src="./script.js" type="module" defer></script>
+        <script src="./scripts/contact.js" type="module" defer></script>
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="styles/general.css">
         <link rel="stylesheet" type="text/css" href="styles/left_container.css">
@@ -38,40 +39,7 @@
         <!-- Contacts -->
         <div class="contacts_container">
             <h2 id="chats">CHATS</h2>
-            <ul class="scroll">
-                <button>
-                    <div class="contact">
-                        <div class="contact_image">
-                            <img src="/images/adil.jpg" alt="">
-                        </div>
-                        <div class="text-in-contact">
-                            <p class="contact_name">Adil</p>
-                            <p class="about_contact">I am lol</p>
-                        </div>
-                    </div>
-                </button>
-                <button>
-                    <div class="contact">
-                        <div class="contact_image">
-                            <img src="/images/daniyar.jpg" alt="">
-                        </div>
-                        <div class="text-in-contact">
-                            <p class="contact_name">Daniyar</p>
-                            <p class="about_contact">I am the best</p>
-                        </div>
-                    </div>
-                </button>
-                <button>
-                    <div class="contact">
-                        <div class="contact_image">
-                            <img src="/images/dim agai.jpg" alt="">
-                        </div>
-                        <div class="text-in-contact">
-                            <p class="contact_name">Dim Agai</p>
-                            <p class="about_contact">I like you</p>
-                        </div>
-                    </div>
-                </button>
+            <ul class="scroll js-scroll">
             </ul>
         </div>
 
@@ -79,6 +47,7 @@
         <div class="profile_container">
             <div class="profile_btn">
                 <img id="profile_logo" src="/images/we.jpg" alt="profile">
+                <span class="nickname">Fronter</span>
             </div>
             <button class="sign_out_btn">
                 <img id="sign_out_logo" src="/images/sign_out.png" alt="sign out">
@@ -106,9 +75,7 @@
 
         <!-- Chat -->
         <ul class="contact-chat_container" id="messageList">
-
         </ul>
-        
         
         <!-- Input -->
         <div class="input_container">
@@ -121,10 +88,7 @@
                     <img src="/images/send.svg" alt="" width="25" height="25">
                 </button>
             </div>
-            
         </div>
     </section>
-    
-
 </body>
 </html>
