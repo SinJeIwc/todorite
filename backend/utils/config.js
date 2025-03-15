@@ -4,10 +4,6 @@ dotenv.config();
 
 export const HTTP_PORT = 3000;
 
-const {
+export const {
   PG_URI,
 } = process.env;
-
-export {
-  PG_URI,
-}

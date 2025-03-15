@@ -1,5 +1,5 @@
 import Knex from 'knex';
-import { PG_URI } from './utils/config.js';
+import { PG_URI } from './config.js';
 
 let knex;
 

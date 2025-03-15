@@ -1,6 +1,10 @@
-fetch(`http://localhost:3000/users?${document.cookie || undefined}`, {
+const [_, token]= document.cookie.split('='); 
+
+fetch(`http://localhost:3000/getUsers`, {
   method: 'GET',
-  credentials: 'include'
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
 }).then(response => {
     if (response.ok) {
       return response.json()

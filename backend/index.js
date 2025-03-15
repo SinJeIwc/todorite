@@ -1,12 +1,16 @@
 import Koa from 'koa';
 import bodyparser from 'koa-bodyparser';
-import { getKnex } from './knex.js';
-import { HTTP_PORT } from './utils/config.js';
-import {
-  router,
-  authRouter
-} from './controllers/index.js';
 import cors from 'koa-cors';
+
+import { getKnex } from './utils/knex.js';
+import { HTTP_PORT } from './utils/config.js';
+
+import {userRouter} from './routes/userRoutes.js';
+import {authRouter} from './routes/authRoutes.js';
+
+import logger from './middleware/logger.js';
+import errorHandler from './middleware/errorHandler.js';
+import authChecker from './middleware/authChecker.js';
 
 
 async function main() {
@@ -14,7 +18,6 @@ async function main() {
 
   const knex = await getKnex();
   const app = new Koa();
-
 
   // Allows connections from FrontEnd server
   app.use(cors({
@@ -25,106 +28,24 @@ async function main() {
   }));
   
   app.use(bodyparser());
-
-  // Joi error handler
-  app.use((async (ctx, next) => {
-    try {
-      await next();
-    } catch (e) {
-      if (e.isJoi) {
-        console.log('this is joi error');
-        ctx.status = 400;
-        ctx.body = {
-          errors: e.details
-        };
-
-      return;
-      }
-
-      console.log('caught in trycatch', e.message);
-
-      ctx.status = 500;
-      ctx.body = {
-        message: e.message
-      };
-    }
-  }));
-
-  // Logger
-  app.use(async (ctx, next) => {
-    console.log(ctx.method, ctx.url, ctx.body);
-
-    await next()
-    console.log('after request in logger');
-  })
+  app.use(errorHandler);
+  app.use(logger);
 
   app.use(authRouter.routes());
-
-  // Cookie checker
-  app.use(async (ctx, next) => {
-    //ctx.request.query.token
-    //const cookieToken = ctx.cookies.get('token');
-    const cookieToken = ctx.request.query.token;
- 
-    console.log(cookieToken)
-
-    if (cookieToken) {
-      const { rows: [userInfo] } = await knex.raw(`
-        select * from tokens
-        inner join users
-          on users.id = tokens.user_id
-        where tokens.token = ?
-      `, [cookieToken]);
-
-      if (!userInfo) {
-        throw new Error('NOT AUTHORIZED');
-      }
-
-      ctx.state.user = userInfo;
-
-      return next();
-    }
-
-    const { headers } = ctx.request;
-    const { authorization } = headers;
-    const token = authorization?.split(' ')[1];
-
-    if (token) {
-      const { rows: [userInfo] } = await knex.raw(`
-        select * from tokens
-        inner join users
-          on users.id = tokens.user_id
-        where tokens.token = ?
-      `, [token]);
-
-      if (!userInfo) {
-        throw new Error('NOT AUTHORIZED');
-      }
-
-      ctx.state.user = userInfo;
-
-      return next();
-    }
-
-
-    throw new Error('NOT AUTHORIZED');
-  });
-
-
-  app.use(router.routes());
-  app.use(router.allowedMethods());
+  app.use(authChecker);
   
+  app.use(userRouter.routes());
+  app.use(userRouter.allowedMethods());
 
   app.use(async (ctx) => {
     ctx.body = {
       Message: 'Welcome to the Backend'
     }
-
     ctx.status = 200;
   });
 
   app.listen(HTTP_PORT, () => {
-    console.log(`servere started at port ${HTTP_PORT}`)
+    console.log(`Server started at port: ${HTTP_PORT}`)
   });
 }
 
