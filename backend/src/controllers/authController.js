@@ -1,6 +1,12 @@
 import bcrypt from 'bcrypt';
 import { getKnex } from '../utils/knex.js';
-import {validateRegisterData, validateLoginData, addUser, createToken} from '../services/authServices.js';
+import {
+  validateRegisterData, 
+  validateLoginData, 
+  addUser, 
+  createToken,
+  setProfileLogo
+} from '../services/authServices.js';
 
 
 export async function register(ctx) {
@@ -8,6 +14,9 @@ export async function register(ctx) {
   
   const passwordHash = await bcrypt.hash(password, 12);
   const dbUser = await addUser(name, email, passwordHash);
+  
+  const [user] = dbUser;
+  await setProfileLogo(user.id, '../assets/images/we.jpg');
 
   ctx.body = { dbUser };
   ctx.status = 201;

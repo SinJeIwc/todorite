@@ -1,4 +1,4 @@
-import {renderContacts} from './scripts/contact.js';
+import {renderContacts} from './controllers/mainController.js';
 const messageInput = document.getElementById("messageInput");
 const messageList = document.getElementById("messageList");
 const addButton = document.querySelector(".send_btn");
@@ -20,6 +20,7 @@ console.log("Данные сохранены!");
 
 let chats = JSON.parse(localStorage.getItem("chats")) || {}; // Загружаем чаты из localStorage //
 
+async function main() { 
 renderContacts();
 // Текущий контакт
 let currentContact = null;
@@ -129,3 +130,6 @@ ellipsisIcon.addEventListener("click", function (event) {
     event.stopPropagation(); // Prevent the click from bubbling up
     deleteAllButton.classList.toggle("active");
 });
+};
+
+main();

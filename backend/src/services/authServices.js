@@ -34,7 +34,7 @@ export async function addUser(name, email, password) {
   }).returning('*');
   
   return user;
-}
+};
 
 
 export async function createToken(user_id) {
@@ -46,7 +46,7 @@ export async function createToken(user_id) {
   });
 
   return token
-}
+};
 
 
 export async function getUserByToken(token) {
@@ -58,4 +58,12 @@ export async function getUserByToken(token) {
   `, [token]);
 
   return userInfo;
-}
+};
+
+
+export async function setProfileLogo(user_id, profile_logo) {
+  await knex('users_profile').insert({
+    user_id,
+    profile_logo,
+  });
+};

@@ -21,7 +21,7 @@ async function main() {
 
   // Allows connections from FrontEnd server
   app.use(cors({
-    origin: 'http://127.0.0.1:8080',
+    origin: 'http://localhost:8080',
     credentials: true,
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowHeaders: ['Content-Type', 'Authorization']
