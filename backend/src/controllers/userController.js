@@ -1,5 +1,6 @@
 import { getKnex } from '../utils/knex.js';
 import { fetchUserByToken } from '../services/authServices.js';
+import { fetchChat } from '../services/userServices.js';
 
 const knex = await getKnex();
 
@@ -35,4 +36,19 @@ export async function getUserByToken(ctx) {
   
   ctx.status = 200;
   ctx.body = { userInfo };
+};
+
+
+export async function getChatId(ctx) {
+  const {user1_id, user2_id} = ctx.request.query;
+  const chat = await fetchChat(user1_id, user2_id);
+
+  if (!chat) {
+    throw new Error('CHAT_NOT_FOUND');
+  };
+  
+  const {id} = chat;
+
+  ctx.status = 200;
+  ctx.body = { id };
 };
