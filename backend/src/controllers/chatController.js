@@ -1,6 +1,9 @@
 import { getKnex } from '../utils/knex.js';
-import { fetchMessages } from '../services/chatServices.js';
-import { fetchChat } from '../services/chatServices.js';
+import {
+  fetchMessages,
+  fetchChat,
+  addMessage
+} from '../services/chatServices.js';
 
 export async function getChatId(ctx) {
   const {user1_id, user2_id} = ctx.request.query;
@@ -23,4 +26,17 @@ export async function getMessages(ctx) {
 
   ctx.status = 200;
   ctx.body = { messages };
+};
+
+
+export async function sendMessage(ctx) {
+  const {chat_id, text, user_id} = ctx.request.body;
+  const result = await addMessage(chat_id, text, user_id);
+
+  if (!result) {
+    throw new Error('NOT_ADDED');
+  };
+
+  ctx.status = 201;
+  ctx.body = { ok: true };
 };

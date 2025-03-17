@@ -18,8 +18,8 @@ export async function register(ctx) {
   const [user] = dbUser;
   await setProfileLogo(user.id, '../assets/images/we.jpg');
 
-  ctx.body = { dbUser };
   ctx.status = 201;
+  ctx.body = { dbUser };
 };
 
 
