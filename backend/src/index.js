@@ -7,6 +7,7 @@ import { HTTP_PORT } from './utils/config.js';
 
 import {userRouter} from './routes/userRoutes.js';
 import {authRouter} from './routes/authRoutes.js';
+import {chatRouter} from './routes/chatRoutes.js';
 
 import logger from './middleware/logger.js';
 import errorHandler from './middleware/errorHandler.js';
@@ -36,6 +37,9 @@ async function main() {
   
   app.use(userRouter.routes());
   app.use(userRouter.allowedMethods());
+
+  app.use(chatRouter.routes());
+  app.use(chatRouter.allowedMethods());
 
   app.use(async (ctx) => {
     ctx.body = {
