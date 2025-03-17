@@ -1,12 +1,10 @@
 import Router from 'koa-router';
 import {
   getUsers,
-  getUsersAndLogo,
-  getUserByToken
+  getCurrentUser
 } from '../controllers/userController.js';
 
 export const userRouter = new Router();
 
-userRouter.get('/getUsers', getUsers);
-userRouter.get('/getUsersAndLogo', getUsersAndLogo);
-userRouter.get('/getUserByToken', getUserByToken);
+userRouter.get('/users', getUsers);
+userRouter.get('/users/me', getCurrentUser);

@@ -30,13 +30,19 @@ export async function login(ctx) {
   const dbUser = await knex('users').where({ email }).first();
 
   if (!dbUser) {
-    throw new Error('USER_NOT_FOUND');
+    ctx.status = 404;
+    ctx.body = { error: 'USER_NOT_FOUND' };
+
+    return;
   }
 
   const match = await bcrypt.compare(password, dbUser.password);
 
   if (!match) {
-    throw new Error('login or password is uncorrect');
+    ctx.status = 401;
+    ctx.body = { error: 'login or password is uncorrect' };
+
+    return;
   }
 
   const token = await createToken(dbUser.id);

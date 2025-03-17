@@ -49,7 +49,7 @@ export async function createToken(user_id) {
 };
 
 
-export async function fetchUserByToken(token) {
+export async function fetchCurrentUser(token) {
   const { rows: [userInfo] } = await knex.raw(`
     select * from tokens
     inner join users
