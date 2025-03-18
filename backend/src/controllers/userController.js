@@ -37,7 +37,14 @@ export async function getUser(ctx) {
   const {user_id} = ctx.params;
   console.log(user_id)
   const user = await fetchUser(user_id);
-  
+ 
+  if (!user) {
+    ctx.status = 404;
+    ctx.body = { error: 'USER_NOT_FOUND' };
+    
+    return;
+  };
+
   ctx.body = { user };
   ctx.status = 200;
 };
