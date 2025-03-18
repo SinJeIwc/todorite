@@ -1,6 +1,6 @@
 import { getKnex } from '../utils/knex.js';
 import { fetchCurrentUser } from '../services/authServices.js';
-import { fetchUsers } from '../services/userServices.js';
+import { fetchUsers, fetchUser } from '../services/userServices.js';
 
 const knex = await getKnex();
 
@@ -31,3 +31,14 @@ export async function getCurrentUser(ctx) {
   ctx.status = 200;
   ctx.body = { userInfo };
 };
+
+
+export async function getUser(ctx) {
+  const {user_id} = ctx.params;
+  console.log(user_id)
+  const user = await fetchUser(user_id);
+  
+  ctx.body = { user };
+  ctx.status = 200;
+};
+
