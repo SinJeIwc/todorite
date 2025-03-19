@@ -1,11 +1,6 @@
 const result = {
   users: [
     {
-      id: 1,
-      name: "Demon",
-      profile_logo: "../../../public/sanjik.jpg",
-    },
-    {
       id: 2,
       name: "Harry",
       profile_logo: "../../../public/sanjik.jpg",
