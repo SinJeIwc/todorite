@@ -1,34 +1,24 @@
+import { useState } from "react";
 import "./RightContainer.css";
 import chatImg from "../../../public/chat.png";
 import paperClip from "../../../public/paperclip.svg";
 import sendImg from "../../../public/send.svg";
-import { messages } from "../../../public/data/chat";
 
-function InputContainer() {
-  function handleKeyDown(event) {
-    if (event.key === "Enter") {
-      const text = event.target.value;
-      messages.push({
-        id: 1,
-        chat_id: 1,
-        text: text,
-        user_id: 1,
-      });
-      console.log(messages);
-    }
-  }
+function InputContainer({ messages, setMessages }) {
+  const [inputValue, setInputValue] = useState("");
 
-  function handleClick() {
-    const inputElement = document.getElementById("messageInput");
-    const text = inputElement.value;
+  function handleSendMessage() {
+    if (!inputValue.trim()) return;
 
-    messages.push({
-      id: 1,
+    const newMessage = {
+      id: Date.now(), // Уникальный ID
       chat_id: 1,
-      text: text,
+      text: inputValue,
       user_id: 1,
-    });
-    console.log(messages);
+    };
+
+    setMessages([...messages, newMessage]); // Добавляем новое сообщение в конец списка
+    setInputValue(""); // Очищаем поле ввода
   }
 
   return (
@@ -39,10 +29,12 @@ function InputContainer() {
           type="text"
           id="messageInput"
           placeholder="Type message..."
-          onKeyDown={handleKeyDown}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
         />
         <img className="send_file" src={paperClip} />
-        <button className="send_btn" onClick={handleClick}>
+        <button className="send_btn" onClick={handleSendMessage}>
           <p>Send</p>
           <img src={sendImg} alt="" width="25" height="25" />
         </button>
@@ -50,4 +42,5 @@ function InputContainer() {
     </footer>
   );
 }
+
 export default InputContainer;
