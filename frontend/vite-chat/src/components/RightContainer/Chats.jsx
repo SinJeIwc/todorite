@@ -17,7 +17,7 @@ function Chats({ currentChat }) {
               }
               key={1}
             >
-              {item.text}
+              <p>{item.text}</p>
             </div>
           ))}
       </ul>
