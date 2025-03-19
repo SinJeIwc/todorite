@@ -1,5 +1,5 @@
 import "./LeftContainer.css";
-import { users } from "../../../public/data/contacts.js";
+import { users } from "../../../public/data/users.js";
 
 function Contacts({ searchTerm, setCurrentChat }) {
   return (
@@ -14,10 +14,10 @@ function Contacts({ searchTerm, setCurrentChat }) {
             >
               <article className="contact">
                 <div className="contact_image">
-                  <img src={user.image} alt="" />
+                  <img src={user.profile_logo} alt="" />
                 </div>
                 <section className="text-in-contact">
-                  <p className="contact_name">{user.nickname}</p>
+                  <p className="contact_name">{user.name}</p>
                   <p className="about_contact">Last message here...</p>
                 </section>
               </article>
