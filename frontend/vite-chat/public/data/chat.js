@@ -12,11 +12,4 @@ const result = {
 };
 
 export let { messages } = result;
-console.log(messages);
-// export let messeges = [
-//   { id: 1, chat_id: 1, text: "dqwdqw", user_id: 2 },
-//   { id: 2, chat_id: 1, text: "dqedqe", user_id: 3 },
-//   { id: 3, chat_id: 1, text: "hello fk u", user_id: 2 },
-//   { id: 4, chat_id: 1, text: "cmghreth", user_id: 3 },
-//   { id: 5, chat_id: 1, text: "cmdadasa", user_id: 2 },
-// ];
+console.log(messages[messages.length - 1].id + 1);
