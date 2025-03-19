@@ -1,0 +1,213 @@
+/* RIGHT CONTAINER */
+.right_container {
+    flex: 1;
+    display: flex;
+    position: relative;
+}
+
+.chat_header {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    color: white;
+    height: 90px;
+    z-index: 100;
+    border-bottom: 1px solid #303030;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    left: 25vw;
+}
+
+.chat_header img {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+}
+
+.current_user {
+    display: flex;
+    padding: 15px 30px;
+    align-items: center;
+}
+
+.current_user_name {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.more_btn {
+    position: absolute;
+    right: 40px;
+    width: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Delete All button when active */
+#deleteAllButton {
+    background-color: #4b0280;
+}
+
+.more.active {
+    display: flex;
+}
+
+.more:hover {
+    background-color: #ff1a1a;
+}
+
+
+/* Chat */
+.contact-chat_container {
+    margin: 90px 40px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    overflow-y: auto;
+}
+
+.contact-chat_container p{
+    margin: 15px;
+    padding: 20px;
+    font-size: medium;
+    border-radius: 20px;
+}
+
+.contact-chat_container img {
+    margin: 15px 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.contact-chat_container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.my-message_container {
+    align-self: flex-end;
+    display: flex;
+}
+
+.contact-message_container {
+    align-self: flex-start;
+    display: flex;
+}
+
+.my-message_container p {
+    word-break: break-all;
+    background-color: #280046;
+    color: white;
+    border-top-right-radius: 0;
+}
+
+.contact-message_container p {
+    word-break: break-all;
+    background-color: #323232;
+    color: white;
+    border-top-left-radius: 0;
+}
+
+/* Input */
+.input_container {
+    background-color: #121212;
+    border-top: 1px solid #303030;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.input_menu {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.input_menu img {
+    width: 36px;
+    height: 36px;
+    margin: 0 10px 0 40px;
+}
+
+.input_menu input {
+    font-weight: 100;
+    font-size: large;
+    height: 30px;
+    padding: 20px 0; 
+    border-radius: 10px;
+    background-color: #121212;
+    color: white;
+    outline: none;
+    flex: 1;
+}
+
+.send_file {
+   cursor: pointer; 
+}
+
+.send_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #5D01A1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 5%;
+    margin-left: 10px;
+    transition: all 0.15s;
+}
+
+.send_btn p {
+    margin: 5px;
+    padding: 0;
+}
+
+.send_btn img {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    padding: 0;
+}
+
+.send_btn:hover {
+    background-color: #4b0280;
+}
+
+.send_btn:active {
+    background-color: #37025e;
+}
+
+
+@media (max-width: 768px) {
+    .chat_header {
+        left: 0;
+    }
+
+}
