@@ -6,20 +6,18 @@ function Chats({ currentChat }) {
   return (
     <>
       <ul className="contact-chat_container" id="messageList">
-        {messages
-          .filter((item) => item?.chat_id == currentChat?.id)
-          .map((item) => (
-            <div
-              className={
-                item.id === meInfo.id
-                  ? "my-message_container"
-                  : "contact-message_container"
-              }
-              key={1}
-            >
-              <p>{item.text}</p>
-            </div>
-          ))}
+        {messages.map((item) => (
+          <div
+            className={
+              item.user_id === meInfo.id
+                ? "my-message_container"
+                : "contact-message_container"
+            }
+            key={item.id}
+          >
+            <p>{item.text}</p>
+          </div>
+        ))}
       </ul>
     </>
   );
