@@ -8,6 +8,7 @@ import { HTTP_PORT } from './utils/config.js';
 import {userRouter} from './routes/userRoutes.js';
 import {authRouter} from './routes/authRoutes.js';
 import {chatRouter} from './routes/chatRoutes.js';
+import {infoRouter} from './routes/infoRoutes.js';
 
 import logger from './middleware/logger.js';
 import errorHandler from './middleware/errorHandler.js';
@@ -41,6 +42,9 @@ async function main() {
   app.use(chatRouter.routes());
   app.use(chatRouter.allowedMethods());
 
+  app.use(infoRouter.routes());
+  app.use(infoRouter.allowedMethods());
+
   app.use(async (ctx) => {
     ctx.body = {
       Message: 'Welcome to the Backend'
@@ -57,4 +61,3 @@ main().catch((e) => {
   console.log(e);
   process.exit(1);
 });
-
