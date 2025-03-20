@@ -1,13 +1,8 @@
 import sign_out_img from "../../../public/sign_out.png";
-import { meInfo } from "../../../public/data/me.js";
+import getCookie from "../../utils/getCookie.jsx";
 import { useState, useEffect } from "react";
 
-document.cookie = `token=0abe3f48f9b1be7f5891fd0f84ece8105fa1d440; path=/;`
-
-function getCookie() {
-  const [_, token] = document.cookie.split('=');
-  return token;
-}
+document.cookie = `token=ba0416e71d89e9ba21410f38d5c36b056b36bc1b; path=/;`
 
 function Footer() {
   const [user, setUser] = useState(null);
@@ -29,7 +24,7 @@ function Footer() {
       });
 
       const data = await response.json();
-      setUser(data);
+      setUser(data.userInfo);
     }
     fetchUser();
   }, []);
@@ -39,8 +34,8 @@ function Footer() {
   return (
     <footer className="profile_container">
       <div className="profile_btn">
-        <img id="profile_logo" src={user.userInfo.profile_logo} alt="profile" />
-        <span className="nickname">{user.userInfo.name}</span>
+        <img id="profile_logo" src={user.profile_logo} alt="profile" />
+        <span className="nickname">{user.name}</span>
       </div>
       <button className="sign_out_btn js-sign_out_btn">
         <img id="sign_out_logo" src={sign_out_img} alt="sign out" />
