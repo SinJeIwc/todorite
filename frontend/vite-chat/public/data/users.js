@@ -3,7 +3,7 @@ const result = {
     {
       id: 2,
       name: "Harry",
-      profile_logo: "../../../public/sanjik.jpg",
+      profile_logo: "../../../public/img/sanjik.jpg",
     },
   ],
 };

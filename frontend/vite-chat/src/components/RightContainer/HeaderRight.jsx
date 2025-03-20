@@ -1,6 +1,6 @@
 import "./RightContainer.css";
-import logo from "../../../public/logo.jpg";
-import ellipsis from "../../../public/ellipsis-vertical-solid.svg";
+import logo from "../../../public/img/logo.jpg";
+import ellipsis from "../../../public/img/ellipsis-vertical-solid.svg";
 import { users } from "../../../public/data/users.js";
 
 function HeaderRight() {

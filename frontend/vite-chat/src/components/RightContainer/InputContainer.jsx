@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./RightContainer.css";
-import chatImg from "../../../public/chat.png";
-import paperClip from "../../../public/paperclip.svg";
-import sendImg from "../../../public/send.svg";
+import chatImg from "../../../public/img/chat.png";
+import paperClip from "../../../public/img/paperclip.svg";
+import sendImg from "../../../public/img/send.svg";
 
 function InputContainer({ messages, setMessages }) {
   const [inputValue, setInputValue] = useState("");

@@ -1,7 +1,5 @@
-import sign_out_img from "../../../public/sign_out.png";
+import sign_out_img from "../../../public/img/sign_out.png";
 import useUser from "../../services/useUser.jsx";
-
-document.cookie = `token=ba0416e71d89e9ba21410f38d5c36b056b36bc1b; path=/;`
 
 function Footer({me}) {
 

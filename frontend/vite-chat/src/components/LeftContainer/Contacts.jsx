@@ -3,33 +3,10 @@ import "./LeftContainer.css";
 import { messages as initialMessages } from "../../../public/data/chat.js";
 import getCookie from "../../utils/getCookie.jsx";
 import useUser from "../../services/useUser.jsx";
+import useUsers from "../../services/useUsers.jsx";
 
 function Contacts({ me, searchTerm, setCurrentChat }) {
-  const [users, setUsers] = useState(null);
-
-  useEffect(() => {
-    async function fetchUsers() {
-      const token = getCookie();
-      
-      if (!token) {
-        console.log("NOT AUTHORIZED");
-        return;
-      }
-      
-      const response = await fetch("http://backend.todorite.live/users?include=profile_logo", {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${token}`
-        },
-      });
-
-      const data = await response.json();
-      console.log(data.users)
-      setUsers(data.users);
-    }
-    fetchUsers();
-  }, []);
-
+  const users = useUsers();
   
   if (!users) return <div>Loading contacts...</div>;
 

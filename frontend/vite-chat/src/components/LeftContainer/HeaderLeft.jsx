@@ -1,5 +1,5 @@
 import "./LeftContainer.css";
-import logo from "../../../public/logo.jpg";
+import logo from "../../../public/img/logo.jpg";
 
 function HeaderLeft() {
   return (

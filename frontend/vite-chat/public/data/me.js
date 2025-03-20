@@ -5,7 +5,7 @@ const result = {
     email: "a@mail.ru",
     password: "$2b$12$EjvCRkkFffjliJwoMfWFOOMF7LzJPnejX0knQW/ewh6L3qWPq5VXG",
     token: "5849cd7ad449f871a2401acc2c3f7d0507dac3e6",
-    profile_logo: "../../../public/sanjik.jpg",
+    profile_logo: "../../../public/img/sanjik.jpg",
   },
 };
 
