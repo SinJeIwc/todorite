@@ -16,7 +16,7 @@ function Contacts({ me, searchTerm, setCurrentChat }) {
         return;
       }
       
-      const response = await fetch("http://backend.todorite.live/users", {
+      const response = await fetch("http://backend.todorite.live/users?include=profile_logo", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
