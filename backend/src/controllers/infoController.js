@@ -1,4 +1,4 @@
-export async function welcome() { 
+export async function welcome(ctx) {
   ctx.body = {
     Message: 'Welcome to the Backend'
   };

@@ -33,6 +33,9 @@ async function main() {
   app.use(errorHandler);
   app.use(logger);
 
+  app.use(infoRouter.routes());
+  app.use(infoRouter.allowedMethods());
+
   app.use(authRouter.routes());
   app.use(authChecker);
   
@@ -41,9 +44,6 @@ async function main() {
 
   app.use(chatRouter.routes());
   app.use(chatRouter.allowedMethods());
-
-  app.use(infoRouter.routes());
-  app.use(infoRouter.allowedMethods());
 
   app.use(async (ctx) => {
     ctx.body = {
