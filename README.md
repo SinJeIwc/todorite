@@ -1,5 +1,5 @@
 # Todorite
-<img src="img/chat.png" width=900>
+<img src="custom/authorization.png" width=900>
 
 ## О проекте
 
@@ -7,6 +7,7 @@
 Backend написан на **Koa**, работает под управлением **PM2**,  
 Frontend реализован с помощью **React** и **Vite**.
 
+<img src="custom/chat.png" width=900>
 
 ## Технологии
 
@@ -54,4 +55,5 @@ todorite/
 │   ├── package.json
 │   └── ...
 ```
+
 
