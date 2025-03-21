@@ -2,18 +2,25 @@ import { useState, useEffect } from "react";
 import getCookie from "../utils/getCookie.jsx";
 
 export default function useChat({ selectedContact, me }) {
-const [chat, setChat] = useState([]);
+  const [chat, setChat] = useState(null);
+  const [loading, setLoading] = useState(true); // Изначально true
 
   useEffect(() => {
     async function loadChatInfo() {
       const token = getCookie();
       if (!token) {
-        console.log("user not authenticated");
+        console.log("User not authenticated");
+        setLoading(false);
         return;
       }
+      if (!selectedContact?.id || !me?.id) {
+        setLoading(false);
+        return; 
+      }
+      setLoading(true);
       try {
         const response = await fetch(
-          `http://backend.todorite.live/chats/contacts/${selectedContact?.id}/${me.id}`,
+          `http://backend.todorite.live/chats/contacts/${selectedContact.id}/${me.id}`,
           {
             method: "GET",
             headers: {
@@ -22,9 +29,8 @@ const [chat, setChat] = useState([]);
           }
         );
         if (response.status === 404) {
-          console.log("MY ID",me.id)
           const createChatResponse = await fetch(
-            `http://backend.todorite.live/chats/contacts/${selectedContact?.id}/${me.id}`,
+            `http://backend.todorite.live/chats/contacts/${selectedContact.id}/${me.id}`,
             {
               method: "POST",
               headers: {
@@ -32,25 +38,23 @@ const [chat, setChat] = useState([]);
                 "Content-Type": "application/json",
               },
             }
-          )
-
+          );
           const data = await createChatResponse.json();
-          console.log("Created:", data);
-          setChat(data.chat);
-
+          console.log("Создан чат:", data);
+          setChat(data);
         } else {
-        const data = await response.json();
-        console.log(data)
-        setChat(data.chat);
-        } 
+          const data = await response.json();
+          console.log("Получен чат:", data.chat);
+          setChat(data.chat);
+        }
       } catch (error) {
-        console.error("failed to load chat info:", error);
+        console.error("Ошибка при загрузке чата:", error);
+      } finally {
+        setLoading(false);
       }
     }
-    if (selectedContact?.id) {
-      loadChatInfo();
-    }
+    loadChatInfo();
   }, [selectedContact, me]);
 
-  return chat;
-};
+  return { chat, loading };
+}
