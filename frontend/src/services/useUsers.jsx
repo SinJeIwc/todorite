@@ -13,7 +13,7 @@ export default function useUsers() {
         return;
       }
       
-      const response = await fetch("http://backend.todorite.live/users?include=profile_logo", {
+      const response = await fetch("https://backend.todorite.live/users?include=profile_logo", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`

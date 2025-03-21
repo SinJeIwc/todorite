@@ -20,7 +20,7 @@ export default function useChat({ selectedContact, me }) {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://backend.todorite.live/chats/contacts/${selectedContact.id}/${me.id}`,
+          `https://backend.todorite.live/chats/contacts/${selectedContact.id}/${me.id}`,
           {
             method: "GET",
             headers: {
@@ -30,7 +30,7 @@ export default function useChat({ selectedContact, me }) {
         );
         if (response.status === 404) {
           const createChatResponse = await fetch(
-            `http://backend.todorite.live/chats/contacts/${selectedContact.id}/${me.id}`,
+            `https://backend.todorite.live/chats/contacts/${selectedContact.id}/${me.id}`,
             {
               method: "POST",
               headers: {

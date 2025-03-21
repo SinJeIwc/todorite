@@ -13,7 +13,7 @@ function RegisterSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://backend.todorite.live/register', {
+      const response = await fetch('https://backend.todorite.live/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })

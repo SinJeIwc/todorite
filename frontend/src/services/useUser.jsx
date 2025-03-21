@@ -14,7 +14,7 @@ export default function useUser() {
         return;
       }
       
-      const response = await fetch("http://backend.todorite.live/auth/me", {
+      const response = await fetch("https://backend.todorite.live/auth/me", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`

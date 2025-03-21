@@ -19,7 +19,7 @@ function RightContainer({ selectedContact, setSelectedContact, me }) {
       }
       try {
         const response = await fetch(
-          `http://backend.todorite.live/chats/${chat.id}/messages`,
+          `https://backend.todorite.live/chats/${chat.id}/messages`,
           {
             method: "GET",
             headers: {

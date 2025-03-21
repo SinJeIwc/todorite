@@ -28,7 +28,7 @@ function InputContainer({chat_id, user_id, messages, setMessages, me}) {
 
     try {
       const response = await fetch(
-        `http://backend.todorite.live/chats/${chat_id}/messages`,
+        `https://backend.todorite.live/chats/${chat_id}/messages`,
         {
           method: "POST",
           headers: {
