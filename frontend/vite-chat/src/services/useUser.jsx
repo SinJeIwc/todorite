@@ -10,6 +10,7 @@ export default function useUser() {
       
       if (!token) {
         console.log("NOT AUTHORIZED");
+        window.location.href = '/login';
         return;
       }
       
