@@ -1,13 +1,16 @@
 import { useState } from "react";
-import "./RightContainer.css";
+import "./RightContainer.css" // Можно создать отдельный файл или оставить общий, если стили общие
 import chatImg from "../../../public/img/chat.png";
 import sendImg from "../../../public/img/send.svg";
 import getCookie from "../../utils/getCookie";
 
-function InputContainer({ messages, setMessages, chatId, userId }) {
+
+
+function InputContainer({chat_id, user_id, messages, setMessages, me}) {
   const [inputValue, setInputValue] = useState("");
 
   async function handleSendMessage() {
+    const chatId = 1
     if (!inputValue.trim()) return;
 
     const token = getCookie();
@@ -17,20 +20,21 @@ function InputContainer({ messages, setMessages, chatId, userId }) {
     }
 
     const newMessage = {
-      chat_id: 1,
+      chat_id: chat_id,
       text: inputValue,
-      user_id: 2,
+      user_id: me.id,
     };
 
     console.log("Sending message:", newMessage);
 
     try {
       const response = await fetch(
-        `http://backend.todorite.live/chats/1/messages`,
+        `http://backend.todorite.live/chats/${chat_id}/messages`,
         {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(newMessage),
         }
@@ -43,7 +47,7 @@ function InputContainer({ messages, setMessages, chatId, userId }) {
       }
 
       const data = await response.json();
-      setMessages([...messages, data]); // Добавляем сообщение из ответа сервера
+      setMessages((prevMessages) => [...prevMessages, data]); // Функциональное обновление стейта
       setInputValue(""); // Очищаем поле ввода
     } catch (error) {
       console.error("Failed to send message:", error);
@@ -53,7 +57,7 @@ function InputContainer({ messages, setMessages, chatId, userId }) {
   return (
     <footer className="input_container">
       <section className="input_menu">
-        <img src={chatImg} id="chat_img" />
+        <img src={chatImg} id="chat_img" alt="Chat Icon" />
         <input
           type="text"
           id="messageInput"

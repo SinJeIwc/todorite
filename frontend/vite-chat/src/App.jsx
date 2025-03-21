@@ -2,19 +2,27 @@ import { useState } from "react";
 import "./App.css";
 import LeftContainer from "./components/LeftContainer/LeftContainer";
 import RightContainer from "./components/RightContainer/RightContainer";
+import useUser from "./services/useUser.jsx";
 
 function App() {
-  let [currentChat, setCurrentChat] = useState({});
+  let [selectedContact, setSelectedContact] = useState({});
+  const me = useUser();
+
+  if (!me) return <div>Loading user!</div>
+  if (!selectedContact) return <div>Choose a chat!</div>
 
   return (
     <main className="body">
       <LeftContainer
-        currentChat={currentChat}
-        setCurrentChat={setCurrentChat}
+        selectedContact={selectedContact}
+        setSelectedContact={setSelectedContact}
+        me={me}
+        
       />
       <RightContainer
-        currentChat={currentChat}
-        setCurrentChat={setCurrentChat}
+        selectedContact={selectedContact}
+        setSelectedContact={setSelectedContact}
+        me={me}
       />
     </main>
   );

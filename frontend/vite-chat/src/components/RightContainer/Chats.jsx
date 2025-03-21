@@ -1,65 +1,43 @@
 import { useState, useEffect, useRef } from "react";
 import { meInfo } from "../../../public/data/me";
-import { users } from "../../../public/data/users";
 import getCookie from "../../utils/getCookie";
 
-function Chats({ messages }) {
-  const chatEndRef = useRef(null);
 
+function Chats({ chat_id, selectedContact, messages, me }) {
+  const chatEndRef = useRef(null);
+  const [fetchedMessages, setFetchedMessages] = useState([]);
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, fetchedMessages]);
 
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    async function fetchUser() {
-      const token = getCookie();
-      if (!token) {
-        console.log("NOT AUTHORIZED");
-        return;
-      }
-
-      const response = await fetch(
-        "http://backend.todorite.live/chats/10/messages/${chat_id}/messages",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      const messages = await response.json();
-      console.log(messages);
-      setUser(messages);
-    }
-    fetchUser();
-  }, []);
+  const allMessages = [...messages, ...fetchedMessages];
+  console.log(allMessages);
 
   return (
     <ul key="chat-list" className="contact-chat_container">
-      {messages.map((item, index) =>
-        item.user_id === meInfo.id ? (
+      {allMessages.map((item, index) =>
+        item.user_id === me.id ? (
           <section
             key={item.id ?? `my-message-${index}`}
             className="my-message_container"
           >
             <p>{item.text}</p>
-            <img src={meInfo.profile_logo} alt="Profile" />
+            <img src={me.profile_logo} alt="Profile" />
           </section>
         ) : (
           <section
             key={item.id ?? `contact-message-${index}`}
             className="contact-message_container"
           >
+            <img src={selectedContact.profile_logo} alt="Profile"/>
             <p>{item.text}</p>
           </section>
         )
       )}
-      <div ref={chatEndRef} /> {/* Прокрутка вниз */}
+      <div ref={chatEndRef} />
     </ul>
   );
 }
 
 export default Chats;
+

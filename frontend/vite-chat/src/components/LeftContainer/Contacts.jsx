@@ -5,7 +5,7 @@ import getCookie from "../../utils/getCookie.jsx";
 import useUser from "../../services/useUser.jsx";
 import useUsers from "../../services/useUsers.jsx";
 
-function Contacts({ me, searchTerm, setCurrentChat }) {
+function Contacts({ me, setSelectedContact }) {
   const users = useUsers();
   
   if (!users) return <div>Loading contacts...</div>;
@@ -19,7 +19,7 @@ function Contacts({ me, searchTerm, setCurrentChat }) {
           .map((user) => (
             <li key={user.id}>
               <button
-                onClick={() => setCurrentChat(user)}
+                onClick={() => setSelectedContact(user)}
                 className="contact_button"
               >
                 <article className="contact">
