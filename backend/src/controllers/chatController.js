@@ -2,7 +2,8 @@ import { getKnex } from '../utils/knex.js';
 import {
   fetchMessages,
   fetchChat,
-  addMessage
+  addMessage,
+  addChat
 } from '../services/chatServices.js';
 
 
@@ -35,5 +36,16 @@ export async function sendMessage(ctx) {
   const result = await addMessage(chat_id, text, user_id);
 
   ctx.status = 201;
-  ctx.body = { ok: true };
+  ctx.body = result;
 };
+
+export async function createChat(ctx) {
+  const { user1_id, user2_id } = ctx.params;
+  const chat = await addChat(user1_id, user2_id);
+
+  console.log(chat);
+  ctx.status = 201;
+  ctx.body = chat;
+};
+
+
