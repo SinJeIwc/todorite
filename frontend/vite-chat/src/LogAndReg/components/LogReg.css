@@ -1,0 +1,102 @@
+.register-container {
+  display: flex;
+  flex: 45;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-menu {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.welcome-menu p {
+  margin: 0;
+  padding: 0;
+}
+
+.welcome-menu {
+  margin-bottom: 40px;
+}
+
+.hello-text {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.sign-up-text {
+  font-size: 18px;
+}
+
+.input-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 50px;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 25px;
+  margin-bottom: 15px;
+}
+
+.menu-icon {
+  margin-left: 20px;
+  margin-right: 8px;
+}
+
+.input-container input {
+  border: none;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 1);
+}
+
+.input-container input:focus {
+  outline: none;
+}
+
+.domain-placeholder {
+  font-size: 14px;
+  color: rgb(107, 107, 107);
+  position: absolute;
+  right: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register-button {
+  width: 100%;
+  background-color: rgba(83, 83, 83, 1);
+  color: white;
+  border: none;
+  height: 50px;
+  border-radius: 25px;
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: rgb(65, 65, 65);
+}
+
+.register-button:active {
+  background-color: rgb(48, 48, 48);
+}
+
+.login-redirect {
+  color: rgba(51, 51, 51, 0.43);
+  font-size: 14px;
+  transition: text-decoration 0.15s;
+  cursor: pointer;
+  margin: 14px 0 14px 0;
+}
+
+.login-redirect:hover {
+  text-decoration: underline;
+}

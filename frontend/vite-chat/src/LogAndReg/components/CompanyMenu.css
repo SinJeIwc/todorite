@@ -1,0 +1,41 @@
+.company-menu {
+  display: flex;
+  flex: 55;
+  background-color: rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: display 0.15s;
+}
+
+.company-text p {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.company-text {
+  margin: 0px 30px 90px 40px;
+}
+
+.company-name {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.company-description {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#company-icon {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .company-menu {
+    display: none;
+  }
+}
