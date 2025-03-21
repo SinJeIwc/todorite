@@ -12,9 +12,8 @@ const [chat, setChat] = useState([]);
         return;
       }
       try {
-        // замените url на ваш эндпоинт для получения сообщений конкретного чата
         const response = await fetch(
-          `http://backend.todorite.live/chats/find/${selectedContact?.id}/${me.id}`,
+          `http://backend.todorite.live/chats/contacts/${selectedContact?.id}/${me.id}`,
           {
             method: "GET",
             headers: {
@@ -22,12 +21,28 @@ const [chat, setChat] = useState([]);
             },
           }
         );
-        if (!response.ok) {
-          throw new error(`error: ${response.status}`);
-        }
+        if (response.status === 404) {
+          console.log("MY ID",me.id)
+          const createChatResponse = await fetch(
+            `http://backend.todorite.live/chats/contacts/${selectedContact?.id}/${me.id}`,
+            {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+
+          const data = await createChatResponse.json();
+          console.log("Created:", data);
+          setChat(data.chat);
+
+        } else {
         const data = await response.json();
         console.log(data)
         setChat(data.chat);
+        } 
       } catch (error) {
         console.error("failed to load chat info:", error);
       }

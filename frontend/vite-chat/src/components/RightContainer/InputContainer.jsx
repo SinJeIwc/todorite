@@ -10,7 +10,6 @@ function InputContainer({chat_id, user_id, messages, setMessages, me}) {
   const [inputValue, setInputValue] = useState("");
 
   async function handleSendMessage() {
-    const chatId = 1
     if (!inputValue.trim()) return;
 
     const token = getCookie();
