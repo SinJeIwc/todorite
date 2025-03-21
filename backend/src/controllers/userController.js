@@ -1,37 +1,31 @@
 import { getKnex } from '../utils/knex.js';
-import { fetchUserByToken } from '../services/authServices.js';
-import { fetchChat } from '../services/userServices.js';
+import { fetchCurrentUser } from '../services/authServices.js';
+import { fetchUsers, fetchUser } from '../services/userServices.js';
 
 const knex = await getKnex();
 
 
 export async function getUsers(ctx) {
-  const users = await knex('users');
-
+  const includeLogo = ctx.query.include === 'profile_logo';
+  const users = await fetchUsers({ includeProfileLogo: includeLogo });
+  
   ctx.body = { users };
   ctx.status = 200;
 };
 
 
-export async function getUsersAndLogo(ctx) {
-  const users = await knex('users')
-    .join('users_profile', 'users.id', '=', 'users_profile.user_id')
-    .select('users.id', 'users.name', 'users_profile.profile_logo');
-  
-  ctx.body = { users };
-  ctx.status = 200; 
-};
-
-
-export async function getUserByToken(ctx) {
+export async function getCurrentUser(ctx) {
   const { headers } = ctx.request;
   const { authorization } = headers;
   const [_, token] = authorization?.split(' ');
  
-  const userInfo = await fetchUserByToken(token);
+  const userInfo = await fetchCurrentUser(token);
 
   if (!userInfo) {
-    throw new Error('USER_NOT_FOUND');
+    ctx.status = 404;
+    ctx.body = { error: 'USER_NOT_FOUND' };
+
+    return;
   }
   
   ctx.status = 200;
@@ -39,16 +33,19 @@ export async function getUserByToken(ctx) {
 };
 
 
-export async function getChatId(ctx) {
-  const {user1_id, user2_id} = ctx.request.query;
-  const chat = await fetchChat(user1_id, user2_id);
-
-  if (!chat) {
-    throw new Error('CHAT_NOT_FOUND');
+export async function getUser(ctx) {
+  const {user_id} = ctx.params;
+  console.log(user_id)
+  const user = await fetchUser(user_id);
+ 
+  if (!user) {
+    ctx.status = 404;
+    ctx.body = { error: 'USER_NOT_FOUND' };
+    
+    return;
   };
-  
-  const {id} = chat;
 
+  ctx.body = { user };
   ctx.status = 200;
-  ctx.body = { id };
 };
+

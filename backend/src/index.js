@@ -7,6 +7,8 @@ import { HTTP_PORT } from './utils/config.js';
 
 import {userRouter} from './routes/userRoutes.js';
 import {authRouter} from './routes/authRoutes.js';
+import {chatRouter} from './routes/chatRoutes.js';
+import {infoRouter} from './routes/infoRoutes.js';
 
 import logger from './middleware/logger.js';
 import errorHandler from './middleware/errorHandler.js';
@@ -21,7 +23,7 @@ async function main() {
 
   // Allows connections from FrontEnd server
   app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: '*',
     credentials: true,
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowHeaders: ['Content-Type', 'Authorization']
@@ -31,11 +33,17 @@ async function main() {
   app.use(errorHandler);
   app.use(logger);
 
+  app.use(infoRouter.routes());
+  app.use(infoRouter.allowedMethods());
+
   app.use(authRouter.routes());
   app.use(authChecker);
   
   app.use(userRouter.routes());
   app.use(userRouter.allowedMethods());
+
+  app.use(chatRouter.routes());
+  app.use(chatRouter.allowedMethods());
 
   app.use(async (ctx) => {
     ctx.body = {
@@ -53,4 +61,3 @@ main().catch((e) => {
   console.log(e);
   process.exit(1);
 });
-

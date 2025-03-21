@@ -14,9 +14,9 @@ export default async function errorHandler(ctx, next) {
 
     console.log('Error', e.message);
 
-    ctx.status = 500;
+    ctx.status = e.status || 500;
     ctx.body = {
-      message: e.message
+      error: e.message
     };
   }
 }
