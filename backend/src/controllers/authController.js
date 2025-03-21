@@ -16,7 +16,7 @@ export async function register(ctx) {
   const dbUser = await addUser(name, email, passwordHash);
   
   const [user] = dbUser;
-  await setProfileLogo(user.id, '../assets/images/we.jpg');
+  await setProfileLogo(user.id, 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg');
 
   ctx.status = 201;
   ctx.body = { dbUser };

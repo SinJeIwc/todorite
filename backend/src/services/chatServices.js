@@ -27,7 +27,19 @@ export async function addMessage(chat_id, text, user_id) {
       chat_id,
       text,
       user_id
-    });
+    }).returning('*');
 
-  return result;
-}
+  const [message] = result;
+  return message;
+};
+
+export async function addChat(user1_id, user2_id) {
+  const result = await knex('chats')
+    .insert({
+      user1_id,
+      user2_id
+    }).returning('*');
+    
+    const [chat] = result;
+    return chat;
+};
