@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import "./index.css";
 import LeftContainer from "./components/LeftContainer/LeftContainer";
 import RightContainer from "./components/RightContainer/RightContainer";
 import useUser from "./services/useUser.jsx";
@@ -8,8 +9,8 @@ function App() {
   let [selectedContact, setSelectedContact] = useState({});
   const me = useUser();
 
-  if (!me) return <div>Loading user!</div>
-  if (!selectedContact) return <div>Choose a chat!</div>
+  if (!me) return <div>Loading user!</div>;
+  if (!selectedContact) return <div>Choose a chat!</div>;
 
   return (
     <main className="body">
@@ -17,7 +18,6 @@ function App() {
         selectedContact={selectedContact}
         setSelectedContact={setSelectedContact}
         me={me}
-        
       />
       <RightContainer
         selectedContact={selectedContact}

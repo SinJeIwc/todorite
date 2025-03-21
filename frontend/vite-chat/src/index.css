@@ -7,8 +7,8 @@ body {
   display: flex;
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  background-color: #121212; /* Темный фон для всего */
   height: 100%;
+  background-color: #121212; /* Темный фон для всего */
 }
 
 html {

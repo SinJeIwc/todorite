@@ -1,5 +1,6 @@
 /* RIGHT CONTAINER */
 .right_container {
+  background-color: #121212; /* Темный фон для всего */
   flex: 1;
   display: flex;
   position: relative;
