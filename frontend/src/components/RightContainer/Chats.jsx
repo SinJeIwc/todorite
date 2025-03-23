@@ -1,7 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { meInfo } from "../../../public/data/me";
-import getCookie from "../../utils/getCookie";
-
 
 function Chats({ chat_id, selectedContact, messages, me }) {
   const chatEndRef = useRef(null);
@@ -29,7 +26,7 @@ function Chats({ chat_id, selectedContact, messages, me }) {
             key={item.id ?? `contact-message-${index}`}
             className="contact-message_container"
           >
-            <img src={selectedContact.profile_logo} alt="Profile"/>
+            <img src={selectedContact.profile_logo} alt="Profile" />
             <p>{item.text}</p>
           </section>
         )
@@ -40,4 +37,3 @@ function Chats({ chat_id, selectedContact, messages, me }) {
 }
 
 export default Chats;
-

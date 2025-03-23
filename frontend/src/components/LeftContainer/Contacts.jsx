@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
 import "./LeftContainer.css";
-import { messages as initialMessages } from "../../../public/data/chat.js";
-import getCookie from "../../utils/getCookie.jsx";
-import useUser from "../../services/useUser.jsx";
 import useUsers from "../../services/useUsers.jsx";
-
 
 function Contacts({ me, setSelectedContact }) {
   const users = useUsers();
-  
+
   if (!users) return <div>Loading contacts...</div>;
 
   return (
@@ -40,4 +35,3 @@ function Contacts({ me, setSelectedContact }) {
 }
 
 export default Contacts;
-

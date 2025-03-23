@@ -1,7 +1,6 @@
 import sign_out_img from "../../../public/img/sign_out.png";
-import useUser from "../../services/useUser.jsx";
 
-function Footer({me}) {
+function Footer({ me }) {
   const handleSignOut = () => {
     document.cookie = "token=; path=/;";
     window.location.href = "/login";
